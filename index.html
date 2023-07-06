@@ -332,6 +332,29 @@
         
           
             <p>记录一下学习Docker的过程～</p>
+<h1 id="Docker架构"><a href="#Docker架构" class="headerlink" title="Docker架构"></a>Docker架构</h1><p>（来源于RUNOOB.COM）</p>
+<ul>
+<li>镜像（Image）：相当于是一个root文件系统。</li>
+<li>容器（Container）：镜像和容器的关系，就像是OOP中的类和实例一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</li>
+<li>仓库（Repository）：仓库可以看成一个代码控制中心，用来保存镜像。</li>
+</ul>
+<p>Docker使用客户端-服务器（C&#x2F;S）架构模式，使用远程API来管理和创建Docker容器。Docker容器通过Docker镜像来创建。</p>
+<h1 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h1><p>官网直接下载安装</p>
+<h1 id="Docker使用"><a href="#Docker使用" class="headerlink" title="Docker使用"></a>Docker使用</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><p>Docker允许你在容器内运行应用程序，使用docker run命令。</p>
+<p><code>docker run ubuntu:15.10 /bin/echo &quot;Hello World&quot;</code></p>
+<p>参数解析：</p>
+<ul>
+<li><code>docker</code>：Docker的二进制执行文件</li>
+<li><code>run</code>：与前面的docker组合来运行一个容器</li>
+<li><code>ubuntu:15.10</code>：制定要运行的镜像，Docker首先从本地主机上查找镜像是否存在，如果不存在，Docker就会从镜像仓库Docker Hub下载公共镜像。</li>
+<li><code>/bin/echo &quot;Hello World&quot;</code>：在启动的容器里执行的命令</li>
+</ul>
+<h2 id="运行交互式的容器"><a href="#运行交互式的容器" class="headerlink" title="运行交互式的容器"></a>运行交互式的容器</h2><p><code>docker run -i -t ubuntu:15.10 /bin/bash</code><br>参数解析：</p>
+<ul>
+<li><code>-t</code>：在容器内制定一个伪终端或终端</li>
+<li><code>-i</code>：允许你对容器内的标准输入（STDIN）进行交互<br>通过运行<code>exit</code>命令或者使用CRTRL+D来退出容器。</li>
+</ul>
+<h2 id="后台运行容器"><a href="#后台运行容器" class="headerlink" title="后台运行容器"></a>后台运行容器</h2><p><code>docker run -d ubuntu:15.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;</code><br>以进程方式运行一个每秒输出hello world的容器<br>使用<code>docker ps</code>来查看正在运行的容器<br>使用<code>docker logs [ID]/[NAME]</code>可以查看对应容器内的标准输出<br>使用<code>docker stop [ID]/[NAME]</code>来停止容器</p>
 
           
         
